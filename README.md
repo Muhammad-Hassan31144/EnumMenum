@@ -19,19 +19,6 @@
   A static, offline-first dashboard for visualizing subdomain enumeration and technology stack analysis results from tools like <b>SubEnum</b>, <b>httpx</b>, and <b>WhatWeb</b>.
 </p>
 
----
-
-```
-  _____                       __  __                               
- | ____|_ __  _   _ _ __ ___ |  \/  | ___ _ __  _   _ _ __ ___  
- |  _| | '_ \| | | | '_ ` _ \| |\/| |/ _ \ '_ \| | | | '_ ` _ \ 
- | |___| | | | |_| | | | | | | |  | |  __/ | | | |_| | | | | | |
- |_____|_| |_|\__,_|_| |_| |_|_|  |_|\___|_| |_|\__,_|_| |_| |_|
-                                                                
-```
-
----
-
 ## ✨ Features
 
 | Feature | Description |
@@ -90,7 +77,7 @@ npm run dev
 ```
 
 **Access Live:**
-> [Click here to open the Live Viewer](https://your-username.github.io/EnumMenum/)
+> [Click here to open the Live Viewer](https://Muhammad-Hassan31144.github.io/EnumMenum/)
 
 ### 2. Generating Data
 Use the **Command Generator** inside the app, or run the command manually:
@@ -114,20 +101,6 @@ cat domains_results.json | jq -r '.url' | whatweb -i /dev/stdin -a 3 --log-json=
 
 ---
 
-## 📂 Project Structure
-
-```
-EnumMenum/
-├── subenum.sh         # The CLI enumeration wrapper script
-├── setup.sh           # Dependency installer script
-├── ui/                # The React-based Visualization Dashboard
-│   ├── src/           # Frontend Source Code
-│   ├── vite.config.js # Build configuration
-│   └── package.json   # UI Dependencies
-└── README.md          # This file
-```
-
----
 
 ## ⚠️ Disclaimer
 
