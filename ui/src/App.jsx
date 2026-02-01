@@ -85,6 +85,11 @@ const App = () => {
     return listFile ? `${listFile.split('.')[0]}_results.json` : 'results.json';
   };
 
+  const getWhatWebOutputFile = () => {
+    if (inputType === 'domain') return domain ? `${domain}_whatweb.json` : 'whatweb_results.json';
+    return listFile ? `${listFile.split('.')[0]}_whatweb.json` : 'whatweb_results.json';
+  };
+
   const baseCmd = inputType === 'domain'
     ? (domain 
         ? `subenum -d ${domain} -s | httpx -title -tech-detect -status-code -ip -cname -content-length -web-server -content-type -json -o ${getOutputFile()}`
@@ -94,7 +99,7 @@ const App = () => {
         : `subenum -l domains.txt -s | httpx ... -json -o results.json`);
 
   const generatedCommand = includeWhatWeb
-    ? `${baseCmd} && cat ${getOutputFile()} | jq -r '.url' | whatweb -i /dev/stdin -a 3 --log-json=whatweb_results.json`
+    ? `${baseCmd} && cat ${getOutputFile()} | jq -r '.url' | whatweb -i /dev/stdin -a 3 --log-json=${getWhatWebOutputFile()}`
     : baseCmd;
 
 
@@ -109,6 +114,13 @@ const App = () => {
             }
         }}
     >
+      <input 
+        type="file" 
+        ref={fileInputRef}
+        className="hidden" 
+        accept=".json,.txt"
+        onChange={handleFileUpload}
+      />
       {/* Header */}
       <header className="border-b border-slate-700 bg-slate-850 sticky top-0 z-50 backdrop-blur-md bg-opacity-80">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -289,13 +301,6 @@ const App = () => {
                         }}
                         onClick={() => fileInputRef.current?.click()}
                     >
-                        <input 
-                            type="file" 
-                            ref={fileInputRef}
-                            className="hidden" 
-                            accept=".json,.txt"
-                            onChange={handleFileUpload}
-                        />
                         <div className="w-16 h-16 bg-slate-900 rounded-full flex items-center justify-center mx-auto mb-4 border border-slate-700">
                             <Upload className="w-8 h-8 text-cyan-500" />
                         </div>
