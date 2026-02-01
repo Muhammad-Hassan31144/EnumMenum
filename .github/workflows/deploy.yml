@@ -16,17 +16,17 @@ jobs:
           node-version: 20
           cache: 'npm'
       - name: Install dependencies
-        working-directory: ./ui
+        working-directory: .
         run: |
           npm install
       - name: Build project
-        working-directory: ./ui
+        working-directory: .
         run: npm run build
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
         with:
           name: production-files
-          path: ./ui/dist
+          path: ./dist
   deploy:
     name: Deploy
     needs: build
