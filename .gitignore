@@ -3,3 +3,4 @@ seed.txt
 setup.sh
 subenum.sh
 xyz.json
+node_modules/*
